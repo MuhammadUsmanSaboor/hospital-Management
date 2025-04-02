@@ -1,0 +1,3210 @@
+{
+	"info": {
+		"_postman_id": "89406f44-c996-44d4-8f28-dacdee3b45d4",
+		"name": "Hospital Mangement API",
+		"description": "The Hospital_Management_API.json file is a Postman collection that encapsulates all API requests for our Hospital Management System backend. It includes 42 endpoints defined in our route.js file, covering functionalities like patient management, bed assignments, staff scheduling, billing, and more. This file demonstrates that each endpoint has been tested successfully against our Node.js server connected to the Hospital_Management SQL Server database, fulfilling the requirements of Deliverable 3.\n\n#### Purpose\n\n- **Testing**: Verifies that all CRUD operations and reports (e.g., patient registration, bed occupancy, monthly revenue) work as intended.\n    \n- **Documentation**: Provides a structured, executable representation of our API for review by our instructor.\n    \n- **Submission**: Serves as a deliverable alongside our backend code (server.js, route.js, controller.js, model.js, etc.), proving functionality without a frontend.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "43676193",
+		"_collection_link": "https://anasbutt-228054.postman.co/workspace/ffb70957-842e-43d3-8765-878bbe740b2e/collection/43676193-89406f44-c996-44d4-8f28-dacdee3b45d4?action=share&source=collection_link&creator=43676193"
+	},
+	"item": [
+		{
+			"name": "/api/patients",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/patients",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"patients"
+					]
+				},
+				"description": "Retriving all patients."
+			},
+			"response": []
+		},
+		{
+			"name": "/api/register-patient",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"patientId\": 11,\r\n    \"name\": \"Jane Doe\",\r\n    \"admissionDate\": \"2024-04-10\",\r\n    \"diagnosis\": \"Fever\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/register-patient",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"register-patient"
+					]
+				},
+				"description": "Register a new patient"
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"patientId\": 11,\r\n    \"name\": \"Jane Doe\",\r\n    \"admissionDate\": \"2024-04-10\",\r\n    \"diagnosis\": \"Fever\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/register-patient",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"register-patient"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "47"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"2f-O55F7xkud+xcGyuyW+HFfDeGveo\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 02 Apr 2025 15:23:49 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Patient 11 registration attempted\"\n}"
+				}
+			]
+		},
+		{
+			"name": "/api/discharge-patient",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"patientId\": 11,\r\n    \"dischargeDate\": \"2024-04-15\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/discharge-patient",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"discharge-patient"
+					]
+				},
+				"description": "Discharging the patients"
+			},
+			"response": []
+		},
+		{
+			"name": "/api/patient-history/:patientId",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true,
+				"disabledSystemHeaders": {
+					"host": true,
+					"user-agent": true,
+					"accept": true,
+					"accept-encoding": true,
+					"connection": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"patientId\": 11\r\n    \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/patient-history",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"patient-history"
+					]
+				},
+				"description": "Getting the History of Patients"
+			},
+			"response": []
+		},
+		{
+			"name": "/api/rooms",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/rooms",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"rooms"
+					]
+				},
+				"description": "Getting rooms info"
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/rooms",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"rooms"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "891"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"37b-LVEvR9oUmW/5ClLoscq8D5Bf1nI\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 02 Apr 2025 16:34:14 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"RoomID\": 1,\n        \"Room_Number\": \"101\",\n        \"Type\": \"ICU\",\n        \"Status\": \"Occupied\",\n        \"number_of_Beds\": 2\n    },\n    {\n        \"RoomID\": 2,\n        \"Room_Number\": \"102\",\n        \"Type\": \"General\",\n        \"Status\": \"Available\",\n        \"number_of_Beds\": 4\n    },\n    {\n        \"RoomID\": 3,\n        \"Room_Number\": \"103\",\n        \"Type\": \"Maternity\",\n        \"Status\": \"Occupied\",\n        \"number_of_Beds\": 3\n    },\n    {\n        \"RoomID\": 4,\n        \"Room_Number\": \"104\",\n        \"Type\": \"Surgical\",\n        \"Status\": \"Available\",\n        \"number_of_Beds\": 1\n    },\n    {\n        \"RoomID\": 5,\n        \"Room_Number\": \"105\",\n        \"Type\": \"General\",\n        \"Status\": \"Occupied\",\n        \"number_of_Beds\": 2\n    },\n    {\n        \"RoomID\": 6,\n        \"Room_Number\": \"106\",\n        \"Type\": \"ICU\",\n        \"Status\": \"Available\",\n        \"number_of_Beds\": 2\n    },\n    {\n        \"RoomID\": 7,\n        \"Room_Number\": \"107\",\n        \"Type\": \"Maternity\",\n        \"Status\": \"Occupied\",\n        \"number_of_Beds\": 3\n    },\n    {\n        \"RoomID\": 8,\n        \"Room_Number\": \"108\",\n        \"Type\": \"Surgical\",\n        \"Status\": \"Available\",\n        \"number_of_Beds\": 1\n    },\n    {\n        \"RoomID\": 9,\n        \"Room_Number\": \"109\",\n        \"Type\": \"General\",\n        \"Status\": \"Occupied\",\n        \"number_of_Beds\": 4\n    },\n    {\n        \"RoomID\": 10,\n        \"Room_Number\": \"110\",\n        \"Type\": \"ICU\",\n        \"Status\": \"Available\",\n        \"number_of_Beds\": 2\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "/api/beds",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/beds",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"beds"
+					]
+				},
+				"description": "Getting Buds Info"
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/beds",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"beds"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "651"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"28b-O56OfdQui2z0zvaz+fdineQmLf8\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 02 Apr 2025 16:44:51 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"BedID\": 1,\n        \"status\": \"Occupied\",\n        \"Type\": \"ICU\",\n        \"Assigned_To\": 1\n    },\n    {\n        \"BedID\": 2,\n        \"status\": \"Occupied\",\n        \"Type\": \"General\",\n        \"Assigned_To\": 3\n    },\n    {\n        \"BedID\": 3,\n        \"status\": \"Occupied\",\n        \"Type\": \"Maternity\",\n        \"Assigned_To\": 3\n    },\n    {\n        \"BedID\": 4,\n        \"status\": \"Available\",\n        \"Type\": \"Surgical\",\n        \"Assigned_To\": 4\n    },\n    {\n        \"BedID\": 5,\n        \"status\": \"Occupied\",\n        \"Type\": \"General\",\n        \"Assigned_To\": 5\n    },\n    {\n        \"BedID\": 6,\n        \"status\": \"Available\",\n        \"Type\": \"ICU\",\n        \"Assigned_To\": 6\n    },\n    {\n        \"BedID\": 7,\n        \"status\": \"Occupied\",\n        \"Type\": \"Maternity\",\n        \"Assigned_To\": 7\n    },\n    {\n        \"BedID\": 8,\n        \"status\": \"Available\",\n        \"Type\": \"Surgical\",\n        \"Assigned_To\": 8\n    },\n    {\n        \"BedID\": 9,\n        \"status\": \"Occupied\",\n        \"Type\": \"General\",\n        \"Assigned_To\": 9\n    },\n    {\n        \"BedID\": 10,\n        \"status\": \"Available\",\n        \"Type\": \"ICU\",\n        \"Assigned_To\": 10\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "/api/bed-occupancy",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/bed-occupancy",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"bed-occupancy"
+					]
+				},
+				"description": "Getting Bed Occupancy Info"
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/bed-occupancy",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"bed-occupancy"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1195"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"4ab-2ohOL3rejnvR2KtLhOHHLHmtbww\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 02 Apr 2025 16:46:03 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"RoomID\": 1,\n        \"Room_Number\": \"101\",\n        \"Room_Type\": \"ICU\",\n        \"BedID\": 1,\n        \"Bed_Status\": \"Occupied\",\n        \"Patient_Name\": \"John Doe\"\n    },\n    {\n        \"RoomID\": 2,\n        \"Room_Number\": \"102\",\n        \"Room_Type\": \"General\",\n        \"BedID\": 2,\n        \"Bed_Status\": \"Occupied\",\n        \"Patient_Name\": \"Emily Johnson\"\n    },\n    {\n        \"RoomID\": 3,\n        \"Room_Number\": \"103\",\n        \"Room_Type\": \"Maternity\",\n        \"BedID\": 3,\n        \"Bed_Status\": \"Occupied\",\n        \"Patient_Name\": \"Emily Johnson\"\n    },\n    {\n        \"RoomID\": 4,\n        \"Room_Number\": \"104\",\n        \"Room_Type\": \"Surgical\",\n        \"BedID\": 4,\n        \"Bed_Status\": \"Available\",\n        \"Patient_Name\": \"Michael Brown\"\n    },\n    {\n        \"RoomID\": 5,\n        \"Room_Number\": \"105\",\n        \"Room_Type\": \"General\",\n        \"BedID\": 5,\n        \"Bed_Status\": \"Occupied\",\n        \"Patient_Name\": \"Sarah Davis\"\n    },\n    {\n        \"RoomID\": 6,\n        \"Room_Number\": \"106\",\n        \"Room_Type\": \"ICU\",\n        \"BedID\": 6,\n        \"Bed_Status\": \"Available\",\n        \"Patient_Name\": \"David Wilson\"\n    },\n    {\n        \"RoomID\": 7,\n        \"Room_Number\": \"107\",\n        \"Room_Type\": \"Maternity\",\n        \"BedID\": 7,\n        \"Bed_Status\": \"Occupied\",\n        \"Patient_Name\": \"Emma Martinez\"\n    },\n    {\n        \"RoomID\": 8,\n        \"Room_Number\": \"108\",\n        \"Room_Type\": \"Surgical\",\n        \"BedID\": 8,\n        \"Bed_Status\": \"Available\",\n        \"Patient_Name\": \"Olivia Garcia\"\n    },\n    {\n        \"RoomID\": 9,\n        \"Room_Number\": \"109\",\n        \"Room_Type\": \"General\",\n        \"BedID\": 9,\n        \"Bed_Status\": \"Occupied\",\n        \"Patient_Name\": \"James Anderson\"\n    },\n    {\n        \"RoomID\": 10,\n        \"Room_Number\": \"110\",\n        \"Room_Type\": \"ICU\",\n        \"BedID\": 10,\n        \"Bed_Status\": \"Available\",\n        \"Patient_Name\": \"William Thomas\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "api/assign-bed",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"patientId\": 11}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/assign-bed",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"assign-bed"
+					]
+				},
+				"description": "Assigning a Bed"
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"patientId\": 11}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/assign-bed",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"assign-bed"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "53"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"35-td+SYfhVTy1XMibpfpdRfLa4enw\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 02 Apr 2025 16:47:46 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Bed assignment attempted for patient 11\"\n}"
+				}
+			]
+		},
+		{
+			"name": "/api/equipment",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/equipment",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"equipment"
+					]
+				},
+				"description": "Getting Equipments Info"
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/equipment",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"equipment"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "952"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"3b8-aCXS+hA9alZAHnynhSuuDLQeKu8\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 02 Apr 2025 16:48:31 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"EquipmentID\": 1,\n        \"Name\": \"X-ray Machine\",\n        \"Location\": \"Radiology Room\",\n        \"Availability\": \"Available\"\n    },\n    {\n        \"EquipmentID\": 2,\n        \"Name\": \"ECG Machine\",\n        \"Location\": \"Cardiology Dept\",\n        \"Availability\": \"In Use\"\n    },\n    {\n        \"EquipmentID\": 3,\n        \"Name\": \"Ventilator\",\n        \"Location\": \"ICU\",\n        \"Availability\": \"Available\"\n    },\n    {\n        \"EquipmentID\": 4,\n        \"Name\": \"MRI Scanner\",\n        \"Location\": \"Imaging Center\",\n        \"Availability\": \"In Maintenance\"\n    },\n    {\n        \"EquipmentID\": 5,\n        \"Name\": \"Defibrillator\",\n        \"Location\": \"Emergency Ward\",\n        \"Availability\": \"Available\"\n    },\n    {\n        \"EquipmentID\": 6,\n        \"Name\": \"Surgical Lamp\",\n        \"Location\": \"Operation Theater\",\n        \"Availability\": \"In Use\"\n    },\n    {\n        \"EquipmentID\": 7,\n        \"Name\": \"Dialysis Machine\",\n        \"Location\": \"Nephrology Dept\",\n        \"Availability\": \"Available\"\n    },\n    {\n        \"EquipmentID\": 8,\n        \"Name\": \"Infusion Pump\",\n        \"Location\": \"Pediatrics\",\n        \"Availability\": \"In Use\"\n    },\n    {\n        \"EquipmentID\": 9,\n        \"Name\": \"Ultrasound Machine\",\n        \"Location\": \"Gynecology Dept\",\n        \"Availability\": \"Available\"\n    },\n    {\n        \"EquipmentID\": 10,\n        \"Name\": \"CT Scanner\",\n        \"Location\": \"Radiology Room\",\n        \"Availability\": \"In Maintenance\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "/api/track-equipment",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/track-equipment",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"track-equipment"
+					]
+				},
+				"description": "Tracking Equipment"
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/track-equipment",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"track-equipment"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "952"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"3b8-G4Hon/7KvyC/tmJ7nwLyK4OAp6M\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 02 Apr 2025 16:49:12 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"EquipmentID\": 2,\n        \"Name\": \"ECG Machine\",\n        \"Location\": \"Cardiology Dept\",\n        \"Availability\": \"In Use\"\n    },\n    {\n        \"EquipmentID\": 6,\n        \"Name\": \"Surgical Lamp\",\n        \"Location\": \"Operation Theater\",\n        \"Availability\": \"In Use\"\n    },\n    {\n        \"EquipmentID\": 8,\n        \"Name\": \"Infusion Pump\",\n        \"Location\": \"Pediatrics\",\n        \"Availability\": \"In Use\"\n    },\n    {\n        \"EquipmentID\": 4,\n        \"Name\": \"MRI Scanner\",\n        \"Location\": \"Imaging Center\",\n        \"Availability\": \"In Maintenance\"\n    },\n    {\n        \"EquipmentID\": 10,\n        \"Name\": \"CT Scanner\",\n        \"Location\": \"Radiology Room\",\n        \"Availability\": \"In Maintenance\"\n    },\n    {\n        \"EquipmentID\": 1,\n        \"Name\": \"X-ray Machine\",\n        \"Location\": \"Radiology Room\",\n        \"Availability\": \"Available\"\n    },\n    {\n        \"EquipmentID\": 5,\n        \"Name\": \"Defibrillator\",\n        \"Location\": \"Emergency Ward\",\n        \"Availability\": \"Available\"\n    },\n    {\n        \"EquipmentID\": 3,\n        \"Name\": \"Ventilator\",\n        \"Location\": \"ICU\",\n        \"Availability\": \"Available\"\n    },\n    {\n        \"EquipmentID\": 9,\n        \"Name\": \"Ultrasound Machine\",\n        \"Location\": \"Gynecology Dept\",\n        \"Availability\": \"Available\"\n    },\n    {\n        \"EquipmentID\": 7,\n        \"Name\": \"Dialysis Machine\",\n        \"Location\": \"Nephrology Dept\",\n        \"Availability\": \"Available\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "/api/staff",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/staff",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"staff"
+					]
+				},
+				"description": "Getting Staff Info"
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/staff",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"staff"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "899"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"383-wTzcyaTWtxDFE/o/t9gz30inqgU\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 02 Apr 2025 16:52:16 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"Staff_Id\": 1,\n        \"Name\": \"Dr. Alice Walker\",\n        \"Role\": \"Surgeon\",\n        \"Availability\": \"Available\"\n    },\n    {\n        \"Staff_Id\": 2,\n        \"Name\": \"Dr. Bob Carter\",\n        \"Role\": \"Physician\",\n        \"Availability\": \"On Leave\"\n    },\n    {\n        \"Staff_Id\": 3,\n        \"Name\": \"Dr. Charles Lee\",\n        \"Role\": \"Cardiologist\",\n        \"Availability\": \"Available\"\n    },\n    {\n        \"Staff_Id\": 4,\n        \"Name\": \"Dr. Diana Scott\",\n        \"Role\": \"Pediatrician\",\n        \"Availability\": \"Available\"\n    },\n    {\n        \"Staff_Id\": 5,\n        \"Name\": \"Dr. Edward Kim\",\n        \"Role\": \"Radiologist\",\n        \"Availability\": \"On Leave\"\n    },\n    {\n        \"Staff_Id\": 6,\n        \"Name\": \"Nurse Fiona Adams\",\n        \"Role\": \"Nurse\",\n        \"Availability\": \"Available\"\n    },\n    {\n        \"Staff_Id\": 7,\n        \"Name\": \"Nurse George Baker\",\n        \"Role\": \"Nurse\",\n        \"Availability\": \"Available\"\n    },\n    {\n        \"Staff_Id\": 8,\n        \"Name\": \"Technician Harry Smith\",\n        \"Role\": \"Lab Technician\",\n        \"Availability\": \"Available\"\n    },\n    {\n        \"Staff_Id\": 9,\n        \"Name\": \"Technician Isabel Johnson\",\n        \"Role\": \"Radiology Technician\",\n        \"Availability\": \"Available\"\n    },\n    {\n        \"Staff_Id\": 10,\n        \"Name\": \"Dr. Jack White\",\n        \"Role\": \"Anesthesiologist\",\n        \"Availability\": \"On Duty\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "/api/staff-availability",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/staff-availability",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"staff-availability"
+					]
+				},
+				"description": "Getting Staff Availability Info"
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/staff-availability",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"staff-availability"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "638"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"27e-to72je8APCnrphZH03z8ehmCL4M\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 02 Apr 2025 16:52:42 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"Staff_Id\": 1,\n        \"Name\": \"Dr. Alice Walker\",\n        \"Role\": \"Surgeon\",\n        \"Availability\": \"Available\"\n    },\n    {\n        \"Staff_Id\": 3,\n        \"Name\": \"Dr. Charles Lee\",\n        \"Role\": \"Cardiologist\",\n        \"Availability\": \"Available\"\n    },\n    {\n        \"Staff_Id\": 4,\n        \"Name\": \"Dr. Diana Scott\",\n        \"Role\": \"Pediatrician\",\n        \"Availability\": \"Available\"\n    },\n    {\n        \"Staff_Id\": 6,\n        \"Name\": \"Nurse Fiona Adams\",\n        \"Role\": \"Nurse\",\n        \"Availability\": \"Available\"\n    },\n    {\n        \"Staff_Id\": 7,\n        \"Name\": \"Nurse George Baker\",\n        \"Role\": \"Nurse\",\n        \"Availability\": \"Available\"\n    },\n    {\n        \"Staff_Id\": 8,\n        \"Name\": \"Technician Harry Smith\",\n        \"Role\": \"Lab Technician\",\n        \"Availability\": \"Available\"\n    },\n    {\n        \"Staff_Id\": 9,\n        \"Name\": \"Technician Isabel Johnson\",\n        \"Role\": \"Radiology Technician\",\n        \"Availability\": \"Available\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "/api/staff-performance",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/staff-performance",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"staff-performance"
+					]
+				},
+				"description": "Getting Staff Performance Info"
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/staff-performance",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"staff-performance"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "732"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"2dc-n/hZNRzUqYQj/wyBtXpc5FmlAJs\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 02 Apr 2025 16:53:28 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"Name\": \"Dr. Jack White\",\n        \"Role\": \"Anesthesiologist\",\n        \"Total_Appointments\": 1\n    },\n    {\n        \"Name\": \"Dr. Charles Lee\",\n        \"Role\": \"Cardiologist\",\n        \"Total_Appointments\": 1\n    },\n    {\n        \"Name\": \"Technician Harry Smith\",\n        \"Role\": \"Lab Technician\",\n        \"Total_Appointments\": 1\n    },\n    {\n        \"Name\": \"Nurse Fiona Adams\",\n        \"Role\": \"Nurse\",\n        \"Total_Appointments\": 1\n    },\n    {\n        \"Name\": \"Nurse George Baker\",\n        \"Role\": \"Nurse\",\n        \"Total_Appointments\": 1\n    },\n    {\n        \"Name\": \"Dr. Diana Scott\",\n        \"Role\": \"Pediatrician\",\n        \"Total_Appointments\": 1\n    },\n    {\n        \"Name\": \"Dr. Bob Carter\",\n        \"Role\": \"Physician\",\n        \"Total_Appointments\": 1\n    },\n    {\n        \"Name\": \"Dr. Edward Kim\",\n        \"Role\": \"Radiologist\",\n        \"Total_Appointments\": 1\n    },\n    {\n        \"Name\": \"Technician Isabel Johnson\",\n        \"Role\": \"Radiology Technician\",\n        \"Total_Appointments\": 1\n    },\n    {\n        \"Name\": \"Dr. Alice Walker\",\n        \"Role\": \"Surgeon\",\n        \"Total_Appointments\": 1\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "/api/appointments",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/appointments",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"appointments"
+					]
+				},
+				"description": "Getting Appointments Info"
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/appointments",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"appointments"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1284"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"504-FThtNL3kKSbvbBEq5jHNGf8eBo0\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 02 Apr 2025 16:54:03 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"Appointments_ID\": 1,\n        \"Patient_ID\": 1,\n        \"Staff_ID\": 1,\n        \"start_Time\": \"2024-03-25T09:00:00.000Z\",\n        \"End_Time\": \"2024-03-25T09:30:00.000Z\"\n    },\n    {\n        \"Appointments_ID\": 2,\n        \"Patient_ID\": 2,\n        \"Staff_ID\": 2,\n        \"start_Time\": \"2024-03-25T10:00:00.000Z\",\n        \"End_Time\": \"2024-03-25T10:30:00.000Z\"\n    },\n    {\n        \"Appointments_ID\": 3,\n        \"Patient_ID\": 3,\n        \"Staff_ID\": 3,\n        \"start_Time\": \"2024-03-25T11:00:00.000Z\",\n        \"End_Time\": \"2024-03-25T11:30:00.000Z\"\n    },\n    {\n        \"Appointments_ID\": 4,\n        \"Patient_ID\": 4,\n        \"Staff_ID\": 4,\n        \"start_Time\": \"2024-03-25T12:00:00.000Z\",\n        \"End_Time\": \"2024-03-25T12:30:00.000Z\"\n    },\n    {\n        \"Appointments_ID\": 5,\n        \"Patient_ID\": 5,\n        \"Staff_ID\": 5,\n        \"start_Time\": \"2024-03-25T13:00:00.000Z\",\n        \"End_Time\": \"2024-03-25T13:30:00.000Z\"\n    },\n    {\n        \"Appointments_ID\": 6,\n        \"Patient_ID\": 6,\n        \"Staff_ID\": 6,\n        \"start_Time\": \"2024-03-25T14:00:00.000Z\",\n        \"End_Time\": \"2024-03-25T14:30:00.000Z\"\n    },\n    {\n        \"Appointments_ID\": 7,\n        \"Patient_ID\": 7,\n        \"Staff_ID\": 7,\n        \"start_Time\": \"2024-03-25T15:00:00.000Z\",\n        \"End_Time\": \"2024-03-25T15:30:00.000Z\"\n    },\n    {\n        \"Appointments_ID\": 8,\n        \"Patient_ID\": 8,\n        \"Staff_ID\": 8,\n        \"start_Time\": \"2024-03-25T16:00:00.000Z\",\n        \"End_Time\": \"2024-03-25T16:30:00.000Z\"\n    },\n    {\n        \"Appointments_ID\": 9,\n        \"Patient_ID\": 9,\n        \"Staff_ID\": 9,\n        \"start_Time\": \"2024-03-25T17:00:00.000Z\",\n        \"End_Time\": \"2024-03-25T17:30:00.000Z\"\n    },\n    {\n        \"Appointments_ID\": 10,\n        \"Patient_ID\": 10,\n        \"Staff_ID\": 10,\n        \"start_Time\": \"2024-03-25T18:00:00.000Z\",\n        \"End_Time\": \"2024-03-25T18:30:00.000Z\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "/api/schedule-appointment",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \r\n    \"patientId\": 11,\r\n    \"doctorId\": 1,\r\n    \"appointmentDate\": \"2024-04-20T10:00:00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/schedule-appointment",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"schedule-appointment"
+					]
+				},
+				"description": "Scheduing Appointments"
+			},
+			"response": [
+				{
+					"name": "/api/schedule-appointment",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \r\n    \"patientId\": 11,\r\n    \"doctorId\": 1,\r\n    \"appointmentDate\": \"2024-04-20T10:00:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/schedule-appointment",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"schedule-appointment"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "35"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"23-QhoKC29IIBRIzzNLaC2kzCk4yIE\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 02 Apr 2025 17:14:26 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Appointment scheduled\"\n}"
+				}
+			]
+		},
+		{
+			"name": "/api/assign-doctor",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"patientId\": 11,\r\n    \"doctorId\": 1,\r\n    \"appointmentDate\": \"2024-04-20T10:00:00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/assign-doctor",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"assign-doctor"
+					]
+				},
+				"description": "Assigning Doctor"
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"patientId\": 11,\r\n    \"doctorId\": 1,\r\n    \"appointmentDate\": \"2024-04-20T10:00:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/assign-doctor",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"assign-doctor"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "43"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"2b-IKyU6l+3olWVJEIn23ujS6+QzpM\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 02 Apr 2025 17:37:06 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Doctor assigned to patient 11\"\n}"
+				}
+			]
+		},
+		{
+			"name": "/api/patient-assignments",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/patient-assignments",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"patient-assignments"
+					]
+				},
+				"description": "Getting Patients Assignments Info"
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/patient-assignments",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"patient-assignments"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "7244"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"1c4c-sk51rXcSVR4uiqTPfORxgzXaSaE\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 02 Apr 2025 17:38:17 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"PatientID\": 1,\n        \"Patient_Name\": \"John Doe\",\n        \"Room_Number\": \"101\",\n        \"BedID\": 1,\n        \"Bed_Status\": \"Occupied\",\n        \"Assigned_Doctor\": null\n    },\n    {\n        \"PatientID\": 2,\n        \"Patient_Name\": \"Jane Smith\",\n        \"Room_Number\": null,\n        \"BedID\": null,\n        \"Bed_Status\": null,\n        \"Assigned_Doctor\": null\n    },\n    {\n        \"PatientID\": 3,\n        \"Patient_Name\": \"Emily Johnson\",\n        \"Room_Number\": \"102\",\n        \"BedID\": 2,\n        \"Bed_Status\": \"Occupied\",\n        \"Assigned_Doctor\": null\n    },\n    {\n        \"PatientID\": 3,\n        \"Patient_Name\": \"Emily Johnson\",\n        \"Room_Number\": \"103\",\n        \"BedID\": 3,\n        \"Bed_Status\": \"Occupied\",\n        \"Assigned_Doctor\": null\n    },\n    {\n        \"PatientID\": 4,\n        \"Patient_Name\": \"Michael Brown\",\n        \"Room_Number\": null,\n        \"BedID\": null,\n        \"Bed_Status\": null,\n        \"Assigned_Doctor\": null\n    },\n    {\n        \"PatientID\": 5,\n        \"Patient_Name\": \"Sarah Davis\",\n        \"Room_Number\": \"105\",\n        \"BedID\": 5,\n        \"Bed_Status\": \"Occupied\",\n        \"Assigned_Doctor\": null\n    },\n    {\n        \"PatientID\": 6,\n        \"Patient_Name\": \"David Wilson\",\n        \"Room_Number\": null,\n        \"BedID\": null,\n        \"Bed_Status\": null,\n        \"Assigned_Doctor\": null\n    },\n    {\n        \"PatientID\": 7,\n        \"Patient_Name\": \"Emma Martinez\",\n        \"Room_Number\": \"107\",\n        \"BedID\": 7,\n        \"Bed_Status\": \"Occupied\",\n        \"Assigned_Doctor\": null\n    },\n    {\n        \"PatientID\": 8,\n        \"Patient_Name\": \"Olivia Garcia\",\n        \"Room_Number\": null,\n        \"BedID\": null,\n        \"Bed_Status\": null,\n        \"Assigned_Doctor\": null\n    },\n    {\n        \"PatientID\": 9,\n        \"Patient_Name\": \"James Anderson\",\n        \"Room_Number\": \"109\",\n        \"BedID\": 9,\n        \"Bed_Status\": \"Occupied\",\n        \"Assigned_Doctor\": null\n    },\n    {\n        \"PatientID\": 10,\n        \"Patient_Name\": \"William Thomas\",\n        \"Room_Number\": null,\n        \"BedID\": null,\n        \"Bed_Status\": null,\n        \"Assigned_Doctor\": null\n    },\n    {\n        \"PatientID\": 11,\n        \"Patient_Name\": \"Jane Doe\",\n        \"Room_Number\": \"104\",\n        \"BedID\": 4,\n        \"Bed_Status\": \"Occupied\",\n        \"Assigned_Doctor\": \"Dr. Alice Walker\"\n    },\n    {\n        \"PatientID\": 11,\n        \"Patient_Name\": \"Jane Doe\",\n        \"Room_Number\": \"104\",\n        \"BedID\": 4,\n        \"Bed_Status\": \"Occupied\",\n        \"Assigned_Doctor\": \"Dr. Alice Walker\"\n    },\n    {\n        \"PatientID\": 11,\n        \"Patient_Name\": \"Jane Doe\",\n        \"Room_Number\": \"104\",\n        \"BedID\": 4,\n        \"Bed_Status\": \"Occupied\",\n        \"Assigned_Doctor\": \"Dr. Alice Walker\"\n    },\n    {\n        \"PatientID\": 11,\n        \"Patient_Name\": \"Jane Doe\",\n        \"Room_Number\": \"104\",\n        \"BedID\": 4,\n        \"Bed_Status\": \"Occupied\",\n        \"Assigned_Doctor\": \"Dr. Alice Walker\"\n    },\n    {\n        \"PatientID\": 11,\n        \"Patient_Name\": \"Jane Doe\",\n        \"Room_Number\": \"104\",\n        \"BedID\": 4,\n        \"Bed_Status\": \"Occupied\",\n        \"Assigned_Doctor\": \"Dr. Alice Walker\"\n    },\n    {\n        \"PatientID\": 11,\n        \"Patient_Name\": \"Jane Doe\",\n        \"Room_Number\": \"104\",\n        \"BedID\": 4,\n        \"Bed_Status\": \"Occupied\",\n        \"Assigned_Doctor\": \"Dr. Alice Walker\"\n    },\n    {\n        \"PatientID\": 11,\n        \"Patient_Name\": \"Jane Doe\",\n        \"Room_Number\": \"104\",\n        \"BedID\": 4,\n        \"Bed_Status\": \"Occupied\",\n        \"Assigned_Doctor\": \"Dr. Alice Walker\"\n    },\n    {\n        \"PatientID\": 11,\n        \"Patient_Name\": \"Jane Doe\",\n        \"Room_Number\": \"104\",\n        \"BedID\": 4,\n        \"Bed_Status\": \"Occupied\",\n        \"Assigned_Doctor\": \"Dr. Alice Walker\"\n    },\n    {\n        \"PatientID\": 11,\n        \"Patient_Name\": \"Jane Doe\",\n        \"Room_Number\": \"104\",\n        \"BedID\": 4,\n        \"Bed_Status\": \"Occupied\",\n        \"Assigned_Doctor\": \"Dr. Alice Walker\"\n    },\n    {\n        \"PatientID\": 11,\n        \"Patient_Name\": \"Jane Doe\",\n        \"Room_Number\": \"104\",\n        \"BedID\": 4,\n        \"Bed_Status\": \"Occupied\",\n        \"Assigned_Doctor\": \"Dr. Alice Walker\"\n    },\n    {\n        \"PatientID\": 11,\n        \"Patient_Name\": \"Jane Doe\",\n        \"Room_Number\": \"104\",\n        \"BedID\": 4,\n        \"Bed_Status\": \"Occupied\",\n        \"Assigned_Doctor\": \"Dr. Alice Walker\"\n    },\n    {\n        \"PatientID\": 11,\n        \"Patient_Name\": \"Jane Doe\",\n        \"Room_Number\": \"106\",\n        \"BedID\": 6,\n        \"Bed_Status\": \"Occupied\",\n        \"Assigned_Doctor\": \"Dr. Alice Walker\"\n    },\n    {\n        \"PatientID\": 11,\n        \"Patient_Name\": \"Jane Doe\",\n        \"Room_Number\": \"106\",\n        \"BedID\": 6,\n        \"Bed_Status\": \"Occupied\",\n        \"Assigned_Doctor\": \"Dr. Alice Walker\"\n    },\n    {\n        \"PatientID\": 11,\n        \"Patient_Name\": \"Jane Doe\",\n        \"Room_Number\": \"106\",\n        \"BedID\": 6,\n        \"Bed_Status\": \"Occupied\",\n        \"Assigned_Doctor\": \"Dr. Alice Walker\"\n    },\n    {\n        \"PatientID\": 11,\n        \"Patient_Name\": \"Jane Doe\",\n        \"Room_Number\": \"106\",\n        \"BedID\": 6,\n        \"Bed_Status\": \"Occupied\",\n        \"Assigned_Doctor\": \"Dr. Alice Walker\"\n    },\n    {\n        \"PatientID\": 11,\n        \"Patient_Name\": \"Jane Doe\",\n        \"Room_Number\": \"106\",\n        \"BedID\": 6,\n        \"Bed_Status\": \"Occupied\",\n        \"Assigned_Doctor\": \"Dr. Alice Walker\"\n    },\n    {\n        \"PatientID\": 11,\n        \"Patient_Name\": \"Jane Doe\",\n        \"Room_Number\": \"106\",\n        \"BedID\": 6,\n        \"Bed_Status\": \"Occupied\",\n        \"Assigned_Doctor\": \"Dr. Alice Walker\"\n    },\n    {\n        \"PatientID\": 11,\n        \"Patient_Name\": \"Jane Doe\",\n        \"Room_Number\": \"106\",\n        \"BedID\": 6,\n        \"Bed_Status\": \"Occupied\",\n        \"Assigned_Doctor\": \"Dr. Alice Walker\"\n    },\n    {\n        \"PatientID\": 11,\n        \"Patient_Name\": \"Jane Doe\",\n        \"Room_Number\": \"106\",\n        \"BedID\": 6,\n        \"Bed_Status\": \"Occupied\",\n        \"Assigned_Doctor\": \"Dr. Alice Walker\"\n    },\n    {\n        \"PatientID\": 11,\n        \"Patient_Name\": \"Jane Doe\",\n        \"Room_Number\": \"106\",\n        \"BedID\": 6,\n        \"Bed_Status\": \"Occupied\",\n        \"Assigned_Doctor\": \"Dr. Alice Walker\"\n    },\n    {\n        \"PatientID\": 11,\n        \"Patient_Name\": \"Jane Doe\",\n        \"Room_Number\": \"106\",\n        \"BedID\": 6,\n        \"Bed_Status\": \"Occupied\",\n        \"Assigned_Doctor\": \"Dr. Alice Walker\"\n    },\n    {\n        \"PatientID\": 11,\n        \"Patient_Name\": \"Jane Doe\",\n        \"Room_Number\": \"106\",\n        \"BedID\": 6,\n        \"Bed_Status\": \"Occupied\",\n        \"Assigned_Doctor\": \"Dr. Alice Walker\"\n    },\n    {\n        \"PatientID\": 11,\n        \"Patient_Name\": \"Jane Doe\",\n        \"Room_Number\": \"108\",\n        \"BedID\": 8,\n        \"Bed_Status\": \"Occupied\",\n        \"Assigned_Doctor\": \"Dr. Alice Walker\"\n    },\n    {\n        \"PatientID\": 11,\n        \"Patient_Name\": \"Jane Doe\",\n        \"Room_Number\": \"108\",\n        \"BedID\": 8,\n        \"Bed_Status\": \"Occupied\",\n        \"Assigned_Doctor\": \"Dr. Alice Walker\"\n    },\n    {\n        \"PatientID\": 11,\n        \"Patient_Name\": \"Jane Doe\",\n        \"Room_Number\": \"108\",\n        \"BedID\": 8,\n        \"Bed_Status\": \"Occupied\",\n        \"Assigned_Doctor\": \"Dr. Alice Walker\"\n    },\n    {\n        \"PatientID\": 11,\n        \"Patient_Name\": \"Jane Doe\",\n        \"Room_Number\": \"108\",\n        \"BedID\": 8,\n        \"Bed_Status\": \"Occupied\",\n        \"Assigned_Doctor\": \"Dr. Alice Walker\"\n    },\n    {\n        \"PatientID\": 11,\n        \"Patient_Name\": \"Jane Doe\",\n        \"Room_Number\": \"108\",\n        \"BedID\": 8,\n        \"Bed_Status\": \"Occupied\",\n        \"Assigned_Doctor\": \"Dr. Alice Walker\"\n    },\n    {\n        \"PatientID\": 11,\n        \"Patient_Name\": \"Jane Doe\",\n        \"Room_Number\": \"108\",\n        \"BedID\": 8,\n        \"Bed_Status\": \"Occupied\",\n        \"Assigned_Doctor\": \"Dr. Alice Walker\"\n    },\n    {\n        \"PatientID\": 11,\n        \"Patient_Name\": \"Jane Doe\",\n        \"Room_Number\": \"108\",\n        \"BedID\": 8,\n        \"Bed_Status\": \"Occupied\",\n        \"Assigned_Doctor\": \"Dr. Alice Walker\"\n    },\n    {\n        \"PatientID\": 11,\n        \"Patient_Name\": \"Jane Doe\",\n        \"Room_Number\": \"108\",\n        \"BedID\": 8,\n        \"Bed_Status\": \"Occupied\",\n        \"Assigned_Doctor\": \"Dr. Alice Walker\"\n    },\n    {\n        \"PatientID\": 11,\n        \"Patient_Name\": \"Jane Doe\",\n        \"Room_Number\": \"108\",\n        \"BedID\": 8,\n        \"Bed_Status\": \"Occupied\",\n        \"Assigned_Doctor\": \"Dr. Alice Walker\"\n    },\n    {\n        \"PatientID\": 11,\n        \"Patient_Name\": \"Jane Doe\",\n        \"Room_Number\": \"108\",\n        \"BedID\": 8,\n        \"Bed_Status\": \"Occupied\",\n        \"Assigned_Doctor\": \"Dr. Alice Walker\"\n    },\n    {\n        \"PatientID\": 11,\n        \"Patient_Name\": \"Jane Doe\",\n        \"Room_Number\": \"108\",\n        \"BedID\": 8,\n        \"Bed_Status\": \"Occupied\",\n        \"Assigned_Doctor\": \"Dr. Alice Walker\"\n    },\n    {\n        \"PatientID\": 11,\n        \"Patient_Name\": \"Jane Doe\",\n        \"Room_Number\": \"110\",\n        \"BedID\": 10,\n        \"Bed_Status\": \"Occupied\",\n        \"Assigned_Doctor\": \"Dr. Alice Walker\"\n    },\n    {\n        \"PatientID\": 11,\n        \"Patient_Name\": \"Jane Doe\",\n        \"Room_Number\": \"110\",\n        \"BedID\": 10,\n        \"Bed_Status\": \"Occupied\",\n        \"Assigned_Doctor\": \"Dr. Alice Walker\"\n    },\n    {\n        \"PatientID\": 11,\n        \"Patient_Name\": \"Jane Doe\",\n        \"Room_Number\": \"110\",\n        \"BedID\": 10,\n        \"Bed_Status\": \"Occupied\",\n        \"Assigned_Doctor\": \"Dr. Alice Walker\"\n    },\n    {\n        \"PatientID\": 11,\n        \"Patient_Name\": \"Jane Doe\",\n        \"Room_Number\": \"110\",\n        \"BedID\": 10,\n        \"Bed_Status\": \"Occupied\",\n        \"Assigned_Doctor\": \"Dr. Alice Walker\"\n    },\n    {\n        \"PatientID\": 11,\n        \"Patient_Name\": \"Jane Doe\",\n        \"Room_Number\": \"110\",\n        \"BedID\": 10,\n        \"Bed_Status\": \"Occupied\",\n        \"Assigned_Doctor\": \"Dr. Alice Walker\"\n    },\n    {\n        \"PatientID\": 11,\n        \"Patient_Name\": \"Jane Doe\",\n        \"Room_Number\": \"110\",\n        \"BedID\": 10,\n        \"Bed_Status\": \"Occupied\",\n        \"Assigned_Doctor\": \"Dr. Alice Walker\"\n    },\n    {\n        \"PatientID\": 11,\n        \"Patient_Name\": \"Jane Doe\",\n        \"Room_Number\": \"110\",\n        \"BedID\": 10,\n        \"Bed_Status\": \"Occupied\",\n        \"Assigned_Doctor\": \"Dr. Alice Walker\"\n    },\n    {\n        \"PatientID\": 11,\n        \"Patient_Name\": \"Jane Doe\",\n        \"Room_Number\": \"110\",\n        \"BedID\": 10,\n        \"Bed_Status\": \"Occupied\",\n        \"Assigned_Doctor\": \"Dr. Alice Walker\"\n    },\n    {\n        \"PatientID\": 11,\n        \"Patient_Name\": \"Jane Doe\",\n        \"Room_Number\": \"110\",\n        \"BedID\": 10,\n        \"Bed_Status\": \"Occupied\",\n        \"Assigned_Doctor\": \"Dr. Alice Walker\"\n    },\n    {\n        \"PatientID\": 11,\n        \"Patient_Name\": \"Jane Doe\",\n        \"Room_Number\": \"110\",\n        \"BedID\": 10,\n        \"Bed_Status\": \"Occupied\",\n        \"Assigned_Doctor\": \"Dr. Alice Walker\"\n    },\n    {\n        \"PatientID\": 11,\n        \"Patient_Name\": \"Jane Doe\",\n        \"Room_Number\": \"110\",\n        \"BedID\": 10,\n        \"Bed_Status\": \"Occupied\",\n        \"Assigned_Doctor\": \"Dr. Alice Walker\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "/api/schedules",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/schedules",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"schedules"
+					]
+				},
+				"description": "Getting Shedules Info"
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/schedules",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"schedules"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1347"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"543-/fHmw1wYZ00c+5WxzHMjJzmWm5M\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 02 Apr 2025 17:39:09 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"Schedule_ID\": 1,\n        \"Resources_ID\": 1,\n        \"start_Time\": \"2024-03-25T08:00:00.000Z\",\n        \"End_Time\": \"2024-03-25T12:00:00.000Z\",\n        \"status\": \"Scheduled\"\n    },\n    {\n        \"Schedule_ID\": 2,\n        \"Resources_ID\": 2,\n        \"start_Time\": \"2024-03-25T09:00:00.000Z\",\n        \"End_Time\": \"2024-03-25T13:00:00.000Z\",\n        \"status\": \"Completed\"\n    },\n    {\n        \"Schedule_ID\": 3,\n        \"Resources_ID\": 3,\n        \"start_Time\": \"2024-03-25T10:00:00.000Z\",\n        \"End_Time\": \"2024-03-25T14:00:00.000Z\",\n        \"status\": \"Scheduled\"\n    },\n    {\n        \"Schedule_ID\": 4,\n        \"Resources_ID\": 4,\n        \"start_Time\": \"2024-03-25T11:00:00.000Z\",\n        \"End_Time\": \"2024-03-25T15:00:00.000Z\",\n        \"status\": \"In Progress\"\n    },\n    {\n        \"Schedule_ID\": 5,\n        \"Resources_ID\": 5,\n        \"start_Time\": \"2024-03-25T12:00:00.000Z\",\n        \"End_Time\": \"2024-03-25T16:00:00.000Z\",\n        \"status\": \"Scheduled\"\n    },\n    {\n        \"Schedule_ID\": 6,\n        \"Resources_ID\": 6,\n        \"start_Time\": \"2024-03-25T13:00:00.000Z\",\n        \"End_Time\": \"2024-03-25T17:00:00.000Z\",\n        \"status\": \"Completed\"\n    },\n    {\n        \"Schedule_ID\": 7,\n        \"Resources_ID\": 7,\n        \"start_Time\": \"2024-03-25T14:00:00.000Z\",\n        \"End_Time\": \"2024-03-25T18:00:00.000Z\",\n        \"status\": \"Scheduled\"\n    },\n    {\n        \"Schedule_ID\": 8,\n        \"Resources_ID\": 8,\n        \"start_Time\": \"2024-03-25T15:00:00.000Z\",\n        \"End_Time\": \"2024-03-25T19:00:00.000Z\",\n        \"status\": \"In Progress\"\n    },\n    {\n        \"Schedule_ID\": 9,\n        \"Resources_ID\": 9,\n        \"start_Time\": \"2024-03-25T16:00:00.000Z\",\n        \"End_Time\": \"2024-03-25T20:00:00.000Z\",\n        \"status\": \"Completed\"\n    },\n    {\n        \"Schedule_ID\": 10,\n        \"Resources_ID\": 10,\n        \"start_Time\": \"2024-03-25T17:00:00.000Z\",\n        \"End_Time\": \"2024-03-25T21:00:00.000Z\",\n        \"status\": \"Scheduled\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "/api/alerts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/alerts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"alerts"
+					]
+				},
+				"description": "Getting Alarm Info"
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/alerts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"alerts"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1215"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"4bf-6TvwQLLWVN47o2P/onlMMLHYeN0\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 02 Apr 2025 17:39:54 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"Alert_ID\": 1,\n        \"Type\": \"Emergency\",\n        \"Description\": \"Fire alarm triggered in ward 3\",\n        \"Timestamp\": \"2024-03-25T08:45:00.000Z\"\n    },\n    {\n        \"Alert_ID\": 2,\n        \"Type\": \"Equipment Failure\",\n        \"Description\": \"X-ray machine malfunctioned\",\n        \"Timestamp\": \"2024-03-25T09:10:00.000Z\"\n    },\n    {\n        \"Alert_ID\": 3,\n        \"Type\": \"Security\",\n        \"Description\": \"Unauthorized person detected\",\n        \"Timestamp\": \"2024-03-25T09:45:00.000Z\"\n    },\n    {\n        \"Alert_ID\": 4,\n        \"Type\": \"Medical\",\n        \"Description\": \"Patient 5 had an emergency\",\n        \"Timestamp\": \"2024-03-25T10:30:00.000Z\"\n    },\n    {\n        \"Alert_ID\": 5,\n        \"Type\": \"Lab Issue\",\n        \"Description\": \"Incorrect test results detected\",\n        \"Timestamp\": \"2024-03-25T11:00:00.000Z\"\n    },\n    {\n        \"Alert_ID\": 6,\n        \"Type\": \"Power Outage\",\n        \"Description\": \"Backup generator activated\",\n        \"Timestamp\": \"2024-03-25T11:30:00.000Z\"\n    },\n    {\n        \"Alert_ID\": 7,\n        \"Type\": \"Supply Shortage\",\n        \"Description\": \"Insufficient blood units available\",\n        \"Timestamp\": \"2024-03-25T12:15:00.000Z\"\n    },\n    {\n        \"Alert_ID\": 8,\n        \"Type\": \"Security\",\n        \"Description\": \"Suspicious activity near pharmacy\",\n        \"Timestamp\": \"2024-03-25T13:00:00.000Z\"\n    },\n    {\n        \"Alert_ID\": 9,\n        \"Type\": \"Maintenance\",\n        \"Description\": \"Plumbing issue in patient room 202\",\n        \"Timestamp\": \"2024-03-25T13:45:00.000Z\"\n    },\n    {\n        \"Alert_ID\": 10,\n        \"Type\": \"Medical\",\n        \"Description\": \"ICU ventilator failure reported\",\n        \"Timestamp\": \"2024-03-25T14:20:00.000Z\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "/api/bills",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/bills",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"bills"
+					]
+				},
+				"description": "Getting Bills Info"
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/bills",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"bills"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1520"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"5f0-bw5fj2m6arrnO2+10qui5UbXOj4\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 02 Apr 2025 17:40:23 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"Bill_Id\": 1,\n        \"Patient_Id\": 1,\n        \"Total_Amount\": 5000,\n        \"Paid_Amount\": 3000,\n        \"Due_Amount\": 2000,\n        \"Payment_Status\": \"Pending\",\n        \"BillingDate\": \"2024-03-26T00:00:00.000Z\"\n    },\n    {\n        \"Bill_Id\": 2,\n        \"Patient_Id\": 2,\n        \"Total_Amount\": 7000,\n        \"Paid_Amount\": 7000,\n        \"Due_Amount\": 0,\n        \"Payment_Status\": \"Paid\",\n        \"BillingDate\": \"2024-03-26T00:00:00.000Z\"\n    },\n    {\n        \"Bill_Id\": 3,\n        \"Patient_Id\": 3,\n        \"Total_Amount\": 2000,\n        \"Paid_Amount\": 1500,\n        \"Due_Amount\": 500,\n        \"Payment_Status\": \"Pending\",\n        \"BillingDate\": \"2024-03-26T00:00:00.000Z\"\n    },\n    {\n        \"Bill_Id\": 4,\n        \"Patient_Id\": 4,\n        \"Total_Amount\": 4500,\n        \"Paid_Amount\": 4500,\n        \"Due_Amount\": 0,\n        \"Payment_Status\": \"Paid\",\n        \"BillingDate\": \"2024-03-26T00:00:00.000Z\"\n    },\n    {\n        \"Bill_Id\": 5,\n        \"Patient_Id\": 5,\n        \"Total_Amount\": 6000,\n        \"Paid_Amount\": 4000,\n        \"Due_Amount\": 2000,\n        \"Payment_Status\": \"Pending\",\n        \"BillingDate\": \"2024-03-26T00:00:00.000Z\"\n    },\n    {\n        \"Bill_Id\": 6,\n        \"Patient_Id\": 6,\n        \"Total_Amount\": 3500,\n        \"Paid_Amount\": 3500,\n        \"Due_Amount\": 0,\n        \"Payment_Status\": \"Paid\",\n        \"BillingDate\": \"2024-03-26T00:00:00.000Z\"\n    },\n    {\n        \"Bill_Id\": 7,\n        \"Patient_Id\": 7,\n        \"Total_Amount\": 8000,\n        \"Paid_Amount\": 5000,\n        \"Due_Amount\": 3000,\n        \"Payment_Status\": \"Pending\",\n        \"BillingDate\": \"2024-03-26T00:00:00.000Z\"\n    },\n    {\n        \"Bill_Id\": 8,\n        \"Patient_Id\": 8,\n        \"Total_Amount\": 1000,\n        \"Paid_Amount\": 1000,\n        \"Due_Amount\": 0,\n        \"Payment_Status\": \"Paid\",\n        \"BillingDate\": \"2024-03-26T00:00:00.000Z\"\n    },\n    {\n        \"Bill_Id\": 9,\n        \"Patient_Id\": 9,\n        \"Total_Amount\": 9000,\n        \"Paid_Amount\": 6000,\n        \"Due_Amount\": 3000,\n        \"Payment_Status\": \"Pending\",\n        \"BillingDate\": \"2024-03-26T00:00:00.000Z\"\n    },\n    {\n        \"Bill_Id\": 10,\n        \"Patient_Id\": 10,\n        \"Total_Amount\": 12000,\n        \"Paid_Amount\": 10000,\n        \"Due_Amount\": 2000,\n        \"Payment_Status\": \"Pending\",\n        \"BillingDate\": \"2024-03-26T00:00:00.000Z\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "/api/generate-bill",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"billId\": 11,\r\n    \"patientId\": 11,\r\n    \"totalAmount\": 5000.00,\r\n    \"paidAmount\": 3000.00\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/generate-bill",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"generate-bill"
+					]
+				},
+				"description": "Generating Bill"
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"billId\": 11,\r\n    \"patientId\": 11,\r\n    \"totalAmount\": 5000.00,\r\n    \"paidAmount\": 3000.00\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/generate-bill",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"generate-bill"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "31"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"1f-kOG5KZTYkgYgIBGKUCBjWBl5aAg\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 02 Apr 2025 17:41:52 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Bill 11 generated\"\n}"
+				}
+			]
+		},
+		{
+			"name": "/api/pay-bill",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"billId\": 1,\r\n    \"paymentAmount\": 2000.00\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/pay-bill",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"pay-bill"
+					]
+				},
+				"description": "Paying Bill"
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"billId\": 1,\r\n    \"paymentAmount\": 2000.00\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/pay-bill",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"pay-bill"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "49"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"31-TZyaWgdYtgkh43URoEEvJIl9+Lg\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 02 Apr 2025 17:43:03 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Payment of 2000 recorded for bill 1\"\n}"
+				}
+			]
+		},
+		{
+			"name": "/api/monthly-revenue",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/monthly-revenue",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"monthly-revenue"
+					]
+				},
+				"description": "Getting Monthly-Revenue"
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/monthly-revenue",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"monthly-revenue"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "150"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"96-+cAqkVJDcMKJj8p+K4yD1l6lCxM\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 02 Apr 2025 17:44:00 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"Month\": \"2025-04\",\n        \"TotalRevenue\": 5000,\n        \"TotalPaid\": 3000,\n        \"TotalDue\": 2000\n    },\n    {\n        \"Month\": \"2024-03\",\n        \"TotalRevenue\": 58000,\n        \"TotalPaid\": 47500,\n        \"TotalDue\": 10500\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "/api/pharmacy",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/pharmacy",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"pharmacy"
+					]
+				},
+				"description": "Getting Pharmacy Info"
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/pharmacy",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"pharmacy"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1058"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"422-SXXMwEzbF+Xab1x3i/83iahYO7o\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 02 Apr 2025 17:44:44 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"Medication_ID\": 1,\n        \"Name\": \"Paracetamol\",\n        \"Quantity\": 100,\n        \"Price\": 10,\n        \"Expiry_Date\": \"2025-06-15T00:00:00.000Z\"\n    },\n    {\n        \"Medication_ID\": 2,\n        \"Name\": \"Ibuprofen\",\n        \"Quantity\": 50,\n        \"Price\": 15,\n        \"Expiry_Date\": \"2025-07-10T00:00:00.000Z\"\n    },\n    {\n        \"Medication_ID\": 3,\n        \"Name\": \"Insulin\",\n        \"Quantity\": 30,\n        \"Price\": 200,\n        \"Expiry_Date\": \"2025-05-20T00:00:00.000Z\"\n    },\n    {\n        \"Medication_ID\": 4,\n        \"Name\": \"Amoxicillin\",\n        \"Quantity\": 40,\n        \"Price\": 25,\n        \"Expiry_Date\": \"2025-12-05T00:00:00.000Z\"\n    },\n    {\n        \"Medication_ID\": 5,\n        \"Name\": \"Metformin\",\n        \"Quantity\": 20,\n        \"Price\": 50,\n        \"Expiry_Date\": \"2026-03-30T00:00:00.000Z\"\n    },\n    {\n        \"Medication_ID\": 6,\n        \"Name\": \"Omeprazole\",\n        \"Quantity\": 60,\n        \"Price\": 30,\n        \"Expiry_Date\": \"2025-08-18T00:00:00.000Z\"\n    },\n    {\n        \"Medication_ID\": 7,\n        \"Name\": \"Salbutamol\",\n        \"Quantity\": 70,\n        \"Price\": 35,\n        \"Expiry_Date\": \"2025-09-25T00:00:00.000Z\"\n    },\n    {\n        \"Medication_ID\": 8,\n        \"Name\": \"Aspirin\",\n        \"Quantity\": 90,\n        \"Price\": 12,\n        \"Expiry_Date\": \"2025-11-10T00:00:00.000Z\"\n    },\n    {\n        \"Medication_ID\": 9,\n        \"Name\": \"Cough Syrup\",\n        \"Quantity\": 55,\n        \"Price\": 20,\n        \"Expiry_Date\": \"2025-07-05T00:00:00.000Z\"\n    },\n    {\n        \"Medication_ID\": 10,\n        \"Name\": \"Vitamin C\",\n        \"Quantity\": 120,\n        \"Price\": 8,\n        \"Expiry_Date\": \"2025-10-12T00:00:00.000Z\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "/api/low-stock",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/low-stock",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"low-stock"
+					]
+				},
+				"description": "Getting Low Stock Info"
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/low-stock",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"low-stock"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "2"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"2-l9Fw4VUO7kr8CvBlt4zaMCqXZ0w\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 02 Apr 2025 17:45:27 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[]"
+				}
+			]
+		},
+		{
+			"name": "/api/expired-medicines",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/expired-medicines",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"expired-medicines"
+					]
+				},
+				"description": "Getting Ex-Medicines Info"
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/expired-medicines",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"expired-medicines"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "2"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"2-l9Fw4VUO7kr8CvBlt4zaMCqXZ0w\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 02 Apr 2025 17:46:01 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[]"
+				}
+			]
+		},
+		{
+			"name": "/api/insert-medicine",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"medicationId\": 1,\r\n    \"name\": \"Paracetamol\",\r\n    \"quantity\": 100,\r\n    \"price\": 5.00,\r\n    \"expiryDate\": \"2025-12-31\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/insert-medicine",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"insert-medicine"
+					]
+				},
+				"description": "Inserting Medicine"
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"medicationId\": 1,\r\n    \"name\": \"Paracetamol\",\r\n    \"quantity\": 100,\r\n    \"price\": 5.00,\r\n    \"expiryDate\": \"2025-12-31\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/insert-medicine",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"insert-medicine"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "57"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"39-F0g4D1AdFF9LsMknMkOdYaZXfLw\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 02 Apr 2025 17:46:51 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Medicine Paracetamol stock update attempted\"\n}"
+				}
+			]
+		},
+		{
+			"name": "/api/low-stock-medicines",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/low-stock-medicines",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"low-stock-medicines"
+					]
+				},
+				"description": "Getting Low Stock Medicine Info"
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/low-stock-medicines",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"low-stock-medicines"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "755"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"2f3-FqA9OC9JldQShiF3MxsoW2TZLm8\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 02 Apr 2025 17:47:47 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"Medication_ID\": 5,\n        \"Name\": \"Metformin\",\n        \"Quantity\": 20,\n        \"Expiry_Date\": \"2026-03-30T00:00:00.000Z\"\n    },\n    {\n        \"Medication_ID\": 3,\n        \"Name\": \"Insulin\",\n        \"Quantity\": 30,\n        \"Expiry_Date\": \"2025-05-20T00:00:00.000Z\"\n    },\n    {\n        \"Medication_ID\": 4,\n        \"Name\": \"Amoxicillin\",\n        \"Quantity\": 40,\n        \"Expiry_Date\": \"2025-12-05T00:00:00.000Z\"\n    },\n    {\n        \"Medication_ID\": 2,\n        \"Name\": \"Ibuprofen\",\n        \"Quantity\": 50,\n        \"Expiry_Date\": \"2025-07-10T00:00:00.000Z\"\n    },\n    {\n        \"Medication_ID\": 9,\n        \"Name\": \"Cough Syrup\",\n        \"Quantity\": 55,\n        \"Expiry_Date\": \"2025-07-05T00:00:00.000Z\"\n    },\n    {\n        \"Medication_ID\": 6,\n        \"Name\": \"Omeprazole\",\n        \"Quantity\": 60,\n        \"Expiry_Date\": \"2025-08-18T00:00:00.000Z\"\n    },\n    {\n        \"Medication_ID\": 7,\n        \"Name\": \"Salbutamol\",\n        \"Quantity\": 70,\n        \"Expiry_Date\": \"2025-09-25T00:00:00.000Z\"\n    },\n    {\n        \"Medication_ID\": 8,\n        \"Name\": \"Aspirin\",\n        \"Quantity\": 90,\n        \"Expiry_Date\": \"2025-11-10T00:00:00.000Z\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "/api/lab-tests",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/lab-tests",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"lab-tests"
+					]
+				},
+				"description": "Getting Lab Tests Info"
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/lab-tests",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"lab-tests"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "854"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"356-GjXEcvn4uuOgkg6vibXSKswYcOg\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 02 Apr 2025 17:49:11 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"Test_Id\": 1,\n        \"Test_Name\": \"Blood Test\",\n        \"Description\": \"Complete blood count test\",\n        \"Cost\": 50\n    },\n    {\n        \"Test_Id\": 2,\n        \"Test_Name\": \"X-Ray\",\n        \"Description\": \"Chest X-ray screening\",\n        \"Cost\": 120\n    },\n    {\n        \"Test_Id\": 3,\n        \"Test_Name\": \"MRI\",\n        \"Description\": \"Brain MRI scan\",\n        \"Cost\": 500\n    },\n    {\n        \"Test_Id\": 4,\n        \"Test_Name\": \"CT Scan\",\n        \"Description\": \"Abdominal CT scan\",\n        \"Cost\": 450\n    },\n    {\n        \"Test_Id\": 5,\n        \"Test_Name\": \"ECG\",\n        \"Description\": \"Heart ECG test\",\n        \"Cost\": 200\n    },\n    {\n        \"Test_Id\": 6,\n        \"Test_Name\": \"Ultrasound\",\n        \"Description\": \"Pregnancy ultrasound\",\n        \"Cost\": 300\n    },\n    {\n        \"Test_Id\": 7,\n        \"Test_Name\": \"Liver Function\",\n        \"Description\": \"Liver function analysis\",\n        \"Cost\": 75\n    },\n    {\n        \"Test_Id\": 8,\n        \"Test_Name\": \"Kidney Function\",\n        \"Description\": \"Kidney function test\",\n        \"Cost\": 85\n    },\n    {\n        \"Test_Id\": 9,\n        \"Test_Name\": \"Thyroid Test\",\n        \"Description\": \"Thyroid hormone level test\",\n        \"Cost\": 95\n    },\n    {\n        \"Test_Id\": 10,\n        \"Test_Name\": \"Covid Test\",\n        \"Description\": \"COVID-19 PCR test\",\n        \"Cost\": 100\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "/api/feedback",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/feedback",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"feedback"
+					]
+				},
+				"description": "Getting Feeback"
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/feedback",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"feedback"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1320"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"528-yPH+x+ES0jbHa1WRN/siOYjnyvw\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 02 Apr 2025 17:49:48 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"Feedback_Id\": 1,\n        \"Patient_Id\": 1,\n        \"Feedback\": \"Great service and friendly staff\",\n        \"Rating\": 5,\n        \"Feedback_Date\": \"2024-03-26T00:00:00.000Z\"\n    },\n    {\n        \"Feedback_Id\": 2,\n        \"Patient_Id\": 2,\n        \"Feedback\": \"Doctor was very attentive\",\n        \"Rating\": 4,\n        \"Feedback_Date\": \"2024-03-26T00:00:00.000Z\"\n    },\n    {\n        \"Feedback_Id\": 3,\n        \"Patient_Id\": 3,\n        \"Feedback\": \"Waiting time was too long\",\n        \"Rating\": 3,\n        \"Feedback_Date\": \"2024-03-26T00:00:00.000Z\"\n    },\n    {\n        \"Feedback_Id\": 4,\n        \"Patient_Id\": 4,\n        \"Feedback\": \"Excellent treatment!\",\n        \"Rating\": 5,\n        \"Feedback_Date\": \"2024-03-26T00:00:00.000Z\"\n    },\n    {\n        \"Feedback_Id\": 5,\n        \"Patient_Id\": 5,\n        \"Feedback\": \"Nurses were very helpful\",\n        \"Rating\": 4,\n        \"Feedback_Date\": \"2024-03-26T00:00:00.000Z\"\n    },\n    {\n        \"Feedback_Id\": 6,\n        \"Patient_Id\": 6,\n        \"Feedback\": \"Billing process took a lot of time\",\n        \"Rating\": 3,\n        \"Feedback_Date\": \"2024-03-26T00:00:00.000Z\"\n    },\n    {\n        \"Feedback_Id\": 7,\n        \"Patient_Id\": 7,\n        \"Feedback\": \"Satisfied with the care received\",\n        \"Rating\": 5,\n        \"Feedback_Date\": \"2024-03-26T00:00:00.000Z\"\n    },\n    {\n        \"Feedback_Id\": 8,\n        \"Patient_Id\": 8,\n        \"Feedback\": \"Pharmacy was out of stock of my medication\",\n        \"Rating\": 2,\n        \"Feedback_Date\": \"2024-03-26T00:00:00.000Z\"\n    },\n    {\n        \"Feedback_Id\": 9,\n        \"Patient_Id\": 9,\n        \"Feedback\": \"Great facilities and clean environment\",\n        \"Rating\": 5,\n        \"Feedback_Date\": \"2024-03-26T00:00:00.000Z\"\n    },\n    {\n        \"Feedback_Id\": 10,\n        \"Patient_Id\": 10,\n        \"Feedback\": \"Doctor explained everything clearly\",\n        \"Rating\": 5,\n        \"Feedback_Date\": \"2024-03-26T00:00:00.000Z\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "/api/ambulance-services",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/ambulance-services",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"ambulance-services"
+					]
+				},
+				"description": "Getting Ambulance Service"
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/ambulance-services",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"ambulance-services"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "2"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"2-l9Fw4VUO7kr8CvBlt4zaMCqXZ0w\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 02 Apr 2025 17:50:29 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[]"
+				}
+			]
+		},
+		{
+			"name": "/api/security",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/security",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"security"
+					]
+				},
+				"description": "Getting Security Info"
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/security",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"security"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1389"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"56d-roqrMSzWL8taC5F/pahF7nW773g\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 02 Apr 2025 17:51:24 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"ID\": 1,\n        \"Incident_Type\": \"Theft\",\n        \"Description\": \"Wallet stolen from patient room\",\n        \"Timestamp\": \"2024-03-25T10:00:00.000Z\",\n        \"HandleBy\": 6\n    },\n    {\n        \"ID\": 2,\n        \"Incident_Type\": \"Unauthorized Access\",\n        \"Description\": \"Visitor entered restricted area\",\n        \"Timestamp\": \"2024-03-25T11:00:00.000Z\",\n        \"HandleBy\": 7\n    },\n    {\n        \"ID\": 3,\n        \"Incident_Type\": \"Violence\",\n        \"Description\": \"Patient had a physical altercation\",\n        \"Timestamp\": \"2024-03-25T12:00:00.000Z\",\n        \"HandleBy\": 8\n    },\n    {\n        \"ID\": 4,\n        \"Incident_Type\": \"Fire Alarm\",\n        \"Description\": \"False fire alarm triggered\",\n        \"Timestamp\": \"2024-03-25T13:00:00.000Z\",\n        \"HandleBy\": 9\n    },\n    {\n        \"ID\": 5,\n        \"Incident_Type\": \"Lost Item\",\n        \"Description\": \"Doctor lost a stethoscope\",\n        \"Timestamp\": \"2024-03-25T14:00:00.000Z\",\n        \"HandleBy\": 10\n    },\n    {\n        \"ID\": 6,\n        \"Incident_Type\": \"Theft\",\n        \"Description\": \"Mobile phone stolen from cafeteria\",\n        \"Timestamp\": \"2024-03-25T15:00:00.000Z\",\n        \"HandleBy\": 6\n    },\n    {\n        \"ID\": 7,\n        \"Incident_Type\": \"Unauthorized Access\",\n        \"Description\": \"Attempted break-in at pharmacy\",\n        \"Timestamp\": \"2024-03-25T16:00:00.000Z\",\n        \"HandleBy\": 7\n    },\n    {\n        \"ID\": 8,\n        \"Incident_Type\": \"Harassment\",\n        \"Description\": \"Nurse reported harassment by patient\",\n        \"Timestamp\": \"2024-03-25T17:00:00.000Z\",\n        \"HandleBy\": 8\n    },\n    {\n        \"ID\": 9,\n        \"Incident_Type\": \"Vandalism\",\n        \"Description\": \"Graffiti found on hospital walls\",\n        \"Timestamp\": \"2024-03-25T18:00:00.000Z\",\n        \"HandleBy\": 9\n    },\n    {\n        \"ID\": 10,\n        \"Incident_Type\": \"Emergency\",\n        \"Description\": \"Suspicious package found in lobby\",\n        \"Timestamp\": \"2024-03-25T19:00:00.000Z\",\n        \"HandleBy\": 10\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "/api/registrations",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/registrations",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"registrations"
+					]
+				},
+				"description": "Getting Registration Info"
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/registrations",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"registrations"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "63"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"3f-GBoFm6tCA1Fftz8vsPqqzN3mPV4\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 02 Apr 2025 17:52:15 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"Registration_No\": 11,\n        \"Patient_Id\": 11,\n        \"Type\": \"New Admission\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "/api/security-incidents",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/security-incidents",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"security-incidents"
+					]
+				},
+				"description": "Getting Security Incidents Info"
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/security-incidents",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"security-incidents"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1538"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"602-o4LiVsE7mJxAzUdMqhSz7UA7ou4\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 02 Apr 2025 17:52:56 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"Incident_Type\": \"Emergency\",\n        \"Description\": \"Suspicious package found in lobby\",\n        \"Timestamp\": \"2024-03-25T19:00:00.000Z\",\n        \"Handled_By\": \"Dr. Jack White\"\n    },\n    {\n        \"Incident_Type\": \"Vandalism\",\n        \"Description\": \"Graffiti found on hospital walls\",\n        \"Timestamp\": \"2024-03-25T18:00:00.000Z\",\n        \"Handled_By\": \"Technician Isabel Johnson\"\n    },\n    {\n        \"Incident_Type\": \"Harassment\",\n        \"Description\": \"Nurse reported harassment by patient\",\n        \"Timestamp\": \"2024-03-25T17:00:00.000Z\",\n        \"Handled_By\": \"Technician Harry Smith\"\n    },\n    {\n        \"Incident_Type\": \"Unauthorized Access\",\n        \"Description\": \"Attempted break-in at pharmacy\",\n        \"Timestamp\": \"2024-03-25T16:00:00.000Z\",\n        \"Handled_By\": \"Nurse George Baker\"\n    },\n    {\n        \"Incident_Type\": \"Theft\",\n        \"Description\": \"Mobile phone stolen from cafeteria\",\n        \"Timestamp\": \"2024-03-25T15:00:00.000Z\",\n        \"Handled_By\": \"Nurse Fiona Adams\"\n    },\n    {\n        \"Incident_Type\": \"Lost Item\",\n        \"Description\": \"Doctor lost a stethoscope\",\n        \"Timestamp\": \"2024-03-25T14:00:00.000Z\",\n        \"Handled_By\": \"Dr. Jack White\"\n    },\n    {\n        \"Incident_Type\": \"Fire Alarm\",\n        \"Description\": \"False fire alarm triggered\",\n        \"Timestamp\": \"2024-03-25T13:00:00.000Z\",\n        \"Handled_By\": \"Technician Isabel Johnson\"\n    },\n    {\n        \"Incident_Type\": \"Violence\",\n        \"Description\": \"Patient had a physical altercation\",\n        \"Timestamp\": \"2024-03-25T12:00:00.000Z\",\n        \"Handled_By\": \"Technician Harry Smith\"\n    },\n    {\n        \"Incident_Type\": \"Unauthorized Access\",\n        \"Description\": \"Visitor entered restricted area\",\n        \"Timestamp\": \"2024-03-25T11:00:00.000Z\",\n        \"Handled_By\": \"Nurse George Baker\"\n    },\n    {\n        \"Incident_Type\": \"Theft\",\n        \"Description\": \"Wallet stolen from patient room\",\n        \"Timestamp\": \"2024-03-25T10:00:00.000Z\",\n        \"Handled_By\": \"Nurse Fiona Adams\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "/api/log-security-incident",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"incidentType\": \"Theft\",\r\n    \"description\": \"Stolen equipment\",\r\n    \"handleBy\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/log-security-incident",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"log-security-incident"
+					]
+				},
+				"description": "Logging S-I"
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"incidentType\": \"Theft\",\r\n    \"description\": \"Stolen equipment\",\r\n    \"handleBy\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/log-security-incident",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"log-security-incident"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "38"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"26-EewPjr6YrhKN7Z2Eu0VPKKpivV0\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 02 Apr 2025 18:03:00 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Security incident logged\"\n}"
+				}
+			]
+		},
+		{
+			"name": "/api/salary-structures",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/salary-structures",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"salary-structures"
+					]
+				},
+				"description": "Getting Salary-Structure"
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/salary-structures",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"salary-structures"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1113"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"459-/8a0YUGfkv1/HoXp4uF30n4XWMY\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 02 Apr 2025 18:03:52 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"RoleID\": 1,\n        \"RoleName\": \"Doctor\",\n        \"BaseSalary\": 100000,\n        \"Allowances\": 20000,\n        \"Deductions\": 10000,\n        \"NetSalary\": 110000\n    },\n    {\n        \"RoleID\": 2,\n        \"RoleName\": \"Nurse\",\n        \"BaseSalary\": 60000,\n        \"Allowances\": 15000,\n        \"Deductions\": 5000,\n        \"NetSalary\": 70000\n    },\n    {\n        \"RoleID\": 3,\n        \"RoleName\": \"Surgeon\",\n        \"BaseSalary\": 150000,\n        \"Allowances\": 25000,\n        \"Deductions\": 15000,\n        \"NetSalary\": 160000\n    },\n    {\n        \"RoleID\": 4,\n        \"RoleName\": \"Pharmacist\",\n        \"BaseSalary\": 50000,\n        \"Allowances\": 10000,\n        \"Deductions\": 3000,\n        \"NetSalary\": 57000\n    },\n    {\n        \"RoleID\": 5,\n        \"RoleName\": \"Lab Technician\",\n        \"BaseSalary\": 40000,\n        \"Allowances\": 8000,\n        \"Deductions\": 2000,\n        \"NetSalary\": 46000\n    },\n    {\n        \"RoleID\": 6,\n        \"RoleName\": \"Security Guard\",\n        \"BaseSalary\": 30000,\n        \"Allowances\": 5000,\n        \"Deductions\": 1000,\n        \"NetSalary\": 34000\n    },\n    {\n        \"RoleID\": 7,\n        \"RoleName\": \"Receptionist\",\n        \"BaseSalary\": 35000,\n        \"Allowances\": 6000,\n        \"Deductions\": 1500,\n        \"NetSalary\": 39500\n    },\n    {\n        \"RoleID\": 8,\n        \"RoleName\": \"Janitor\",\n        \"BaseSalary\": 25000,\n        \"Allowances\": 4000,\n        \"Deductions\": 500,\n        \"NetSalary\": 28500\n    },\n    {\n        \"RoleID\": 9,\n        \"RoleName\": \"Administrator\",\n        \"BaseSalary\": 70000,\n        \"Allowances\": 15000,\n        \"Deductions\": 5000,\n        \"NetSalary\": 80000\n    },\n    {\n        \"RoleID\": 10,\n        \"RoleName\": \"Radiologist\",\n        \"BaseSalary\": 90000,\n        \"Allowances\": 18000,\n        \"Deductions\": 7000,\n        \"NetSalary\": 101000\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "/api/staff-salaries",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/staff-salaries",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"staff-salaries"
+					]
+				},
+				"description": "Getting Staff-Salaries"
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/staff-salaries",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"staff-salaries"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1777"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"6f1-2pdXSq1IwClNeWckp+eVueXhGrA\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 02 Apr 2025 18:04:36 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"SalaryID\": 1,\n        \"StaffID\": 1,\n        \"RoleID\": 1,\n        \"GrossSalary\": 120000,\n        \"Allowances\": 20000,\n        \"Deductions\": 10000,\n        \"NetSalary\": 110000,\n        \"PaymentDate\": \"2025-03-01T00:00:00.000Z\",\n        \"PaymentStatus\": \"Paid\"\n    },\n    {\n        \"SalaryID\": 2,\n        \"StaffID\": 2,\n        \"RoleID\": 2,\n        \"GrossSalary\": 70000,\n        \"Allowances\": 15000,\n        \"Deductions\": 5000,\n        \"NetSalary\": 70000,\n        \"PaymentDate\": \"2025-03-01T00:00:00.000Z\",\n        \"PaymentStatus\": \"Paid\"\n    },\n    {\n        \"SalaryID\": 3,\n        \"StaffID\": 3,\n        \"RoleID\": 3,\n        \"GrossSalary\": 170000,\n        \"Allowances\": 25000,\n        \"Deductions\": 15000,\n        \"NetSalary\": 160000,\n        \"PaymentDate\": \"2025-03-01T00:00:00.000Z\",\n        \"PaymentStatus\": \"Paid\"\n    },\n    {\n        \"SalaryID\": 4,\n        \"StaffID\": 4,\n        \"RoleID\": 4,\n        \"GrossSalary\": 60000,\n        \"Allowances\": 10000,\n        \"Deductions\": 3000,\n        \"NetSalary\": 57000,\n        \"PaymentDate\": \"2025-03-01T00:00:00.000Z\",\n        \"PaymentStatus\": \"Paid\"\n    },\n    {\n        \"SalaryID\": 5,\n        \"StaffID\": 5,\n        \"RoleID\": 5,\n        \"GrossSalary\": 48000,\n        \"Allowances\": 8000,\n        \"Deductions\": 2000,\n        \"NetSalary\": 46000,\n        \"PaymentDate\": \"2025-03-01T00:00:00.000Z\",\n        \"PaymentStatus\": \"Paid\"\n    },\n    {\n        \"SalaryID\": 6,\n        \"StaffID\": 6,\n        \"RoleID\": 6,\n        \"GrossSalary\": 35000,\n        \"Allowances\": 5000,\n        \"Deductions\": 1000,\n        \"NetSalary\": 34000,\n        \"PaymentDate\": \"2025-03-01T00:00:00.000Z\",\n        \"PaymentStatus\": \"Paid\"\n    },\n    {\n        \"SalaryID\": 7,\n        \"StaffID\": 7,\n        \"RoleID\": 7,\n        \"GrossSalary\": 40000,\n        \"Allowances\": 6000,\n        \"Deductions\": 1500,\n        \"NetSalary\": 39500,\n        \"PaymentDate\": \"2025-03-01T00:00:00.000Z\",\n        \"PaymentStatus\": \"Paid\"\n    },\n    {\n        \"SalaryID\": 8,\n        \"StaffID\": 8,\n        \"RoleID\": 8,\n        \"GrossSalary\": 29000,\n        \"Allowances\": 4000,\n        \"Deductions\": 500,\n        \"NetSalary\": 28500,\n        \"PaymentDate\": \"2025-03-01T00:00:00.000Z\",\n        \"PaymentStatus\": \"Paid\"\n    },\n    {\n        \"SalaryID\": 9,\n        \"StaffID\": 9,\n        \"RoleID\": 9,\n        \"GrossSalary\": 75000,\n        \"Allowances\": 15000,\n        \"Deductions\": 5000,\n        \"NetSalary\": 80000,\n        \"PaymentDate\": \"2025-03-01T00:00:00.000Z\",\n        \"PaymentStatus\": \"Paid\"\n    },\n    {\n        \"SalaryID\": 10,\n        \"StaffID\": 10,\n        \"RoleID\": 10,\n        \"GrossSalary\": 100000,\n        \"Allowances\": 18000,\n        \"Deductions\": 7000,\n        \"NetSalary\": 101000,\n        \"PaymentDate\": \"2025-03-01T00:00:00.000Z\",\n        \"PaymentStatus\": \"Paid\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "/api/process-salaries",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/process-salaries",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"process-salaries"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/process-salaries",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"process-salaries"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "32"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"20-sawZoSJpJlkhnxmG0ZZYqK+KpZg\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 02 Apr 2025 18:31:39 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Salaries processed\"\n}"
+				}
+			]
+		},
+		{
+			"name": "/api/staff-salary-report",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/staff-salary-report",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"staff-salary-report"
+					]
+				},
+				"description": "Getting Staff-Salary Report"
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/staff-salary-report",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"staff-salary-report"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1865"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"749-SVXX/670I4rPVVEsSEqjFFGZW/g\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 02 Apr 2025 18:10:55 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"SalaryID\": 1,\n        \"StaffName\": \"Dr. Alice Walker\",\n        \"GrossSalary\": 120000,\n        \"Allowances\": 20000,\n        \"Deductions\": 10000,\n        \"NetSalary\": 110000,\n        \"PaymentDate\": \"2025-03-01T00:00:00.000Z\",\n        \"PaymentStatus\": \"Paid\"\n    },\n    {\n        \"SalaryID\": 2,\n        \"StaffName\": \"Dr. Bob Carter\",\n        \"GrossSalary\": 70000,\n        \"Allowances\": 15000,\n        \"Deductions\": 5000,\n        \"NetSalary\": 70000,\n        \"PaymentDate\": \"2025-03-01T00:00:00.000Z\",\n        \"PaymentStatus\": \"Paid\"\n    },\n    {\n        \"SalaryID\": 3,\n        \"StaffName\": \"Dr. Charles Lee\",\n        \"GrossSalary\": 170000,\n        \"Allowances\": 25000,\n        \"Deductions\": 15000,\n        \"NetSalary\": 160000,\n        \"PaymentDate\": \"2025-03-01T00:00:00.000Z\",\n        \"PaymentStatus\": \"Paid\"\n    },\n    {\n        \"SalaryID\": 4,\n        \"StaffName\": \"Dr. Diana Scott\",\n        \"GrossSalary\": 60000,\n        \"Allowances\": 10000,\n        \"Deductions\": 3000,\n        \"NetSalary\": 57000,\n        \"PaymentDate\": \"2025-03-01T00:00:00.000Z\",\n        \"PaymentStatus\": \"Paid\"\n    },\n    {\n        \"SalaryID\": 5,\n        \"StaffName\": \"Dr. Edward Kim\",\n        \"GrossSalary\": 48000,\n        \"Allowances\": 8000,\n        \"Deductions\": 2000,\n        \"NetSalary\": 46000,\n        \"PaymentDate\": \"2025-03-01T00:00:00.000Z\",\n        \"PaymentStatus\": \"Paid\"\n    },\n    {\n        \"SalaryID\": 6,\n        \"StaffName\": \"Nurse Fiona Adams\",\n        \"GrossSalary\": 35000,\n        \"Allowances\": 5000,\n        \"Deductions\": 1000,\n        \"NetSalary\": 34000,\n        \"PaymentDate\": \"2025-03-01T00:00:00.000Z\",\n        \"PaymentStatus\": \"Paid\"\n    },\n    {\n        \"SalaryID\": 7,\n        \"StaffName\": \"Nurse George Baker\",\n        \"GrossSalary\": 40000,\n        \"Allowances\": 6000,\n        \"Deductions\": 1500,\n        \"NetSalary\": 39500,\n        \"PaymentDate\": \"2025-03-01T00:00:00.000Z\",\n        \"PaymentStatus\": \"Paid\"\n    },\n    {\n        \"SalaryID\": 8,\n        \"StaffName\": \"Technician Harry Smith\",\n        \"GrossSalary\": 29000,\n        \"Allowances\": 4000,\n        \"Deductions\": 500,\n        \"NetSalary\": 28500,\n        \"PaymentDate\": \"2025-03-01T00:00:00.000Z\",\n        \"PaymentStatus\": \"Paid\"\n    },\n    {\n        \"SalaryID\": 9,\n        \"StaffName\": \"Technician Isabel Johnson\",\n        \"GrossSalary\": 75000,\n        \"Allowances\": 15000,\n        \"Deductions\": 5000,\n        \"NetSalary\": 80000,\n        \"PaymentDate\": \"2025-03-01T00:00:00.000Z\",\n        \"PaymentStatus\": \"Paid\"\n    },\n    {\n        \"SalaryID\": 10,\n        \"StaffName\": \"Dr. Jack White\",\n        \"GrossSalary\": 100000,\n        \"Allowances\": 18000,\n        \"Deductions\": 7000,\n        \"NetSalary\": 101000,\n        \"PaymentDate\": \"2025-03-01T00:00:00.000Z\",\n        \"PaymentStatus\": \"Paid\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "/api/top-paid-staff",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/top-paid-staff",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"top-paid-staff"
+					]
+				},
+				"description": "Getting Top Paid Salary"
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/top-paid-staff",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"top-paid-staff"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "263"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"107-w0NjZNCG7N6n1LbE8o572WAYf4E\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 02 Apr 2025 18:11:26 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"StaffName\": \"Dr. Charles Lee\",\n        \"NetSalary\": 160000\n    },\n    {\n        \"StaffName\": \"Dr. Alice Walker\",\n        \"NetSalary\": 110000\n    },\n    {\n        \"StaffName\": \"Dr. Jack White\",\n        \"NetSalary\": 101000\n    },\n    {\n        \"StaffName\": \"Technician Isabel Johnson\",\n        \"NetSalary\": 80000\n    },\n    {\n        \"StaffName\": \"Dr. Bob Carter\",\n        \"NetSalary\": 70000\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "/api/payroll",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/payroll",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"payroll"
+					]
+				},
+				"description": "Getting Payroll"
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/payroll",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"payroll"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1552"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"610-Fh5veQnsOxL06sdifeyTLlnlOOY\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 02 Apr 2025 18:12:03 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"PayrollID\": 1,\n        \"MonthYear\": \"2025-03\",\n        \"TotalGrossSalary\": 895000,\n        \"TotalDeductions\": 66500,\n        \"TotalNetSalary\": 961500,\n        \"ProcessedDate\": \"2025-03-02T00:00:00.000Z\"\n    },\n    {\n        \"PayrollID\": 2,\n        \"MonthYear\": \"2025-02\",\n        \"TotalGrossSalary\": 875000,\n        \"TotalDeductions\": 65000,\n        \"TotalNetSalary\": 940000,\n        \"ProcessedDate\": \"2025-02-28T00:00:00.000Z\"\n    },\n    {\n        \"PayrollID\": 3,\n        \"MonthYear\": \"2025-01\",\n        \"TotalGrossSalary\": 860000,\n        \"TotalDeductions\": 64000,\n        \"TotalNetSalary\": 926000,\n        \"ProcessedDate\": \"2025-01-31T00:00:00.000Z\"\n    },\n    {\n        \"PayrollID\": 4,\n        \"MonthYear\": \"2024-12\",\n        \"TotalGrossSalary\": 840000,\n        \"TotalDeductions\": 62000,\n        \"TotalNetSalary\": 918000,\n        \"ProcessedDate\": \"2024-12-31T00:00:00.000Z\"\n    },\n    {\n        \"PayrollID\": 5,\n        \"MonthYear\": \"2024-11\",\n        \"TotalGrossSalary\": 820000,\n        \"TotalDeductions\": 60000,\n        \"TotalNetSalary\": 900000,\n        \"ProcessedDate\": \"2024-11-30T00:00:00.000Z\"\n    },\n    {\n        \"PayrollID\": 6,\n        \"MonthYear\": \"2024-10\",\n        \"TotalGrossSalary\": 800000,\n        \"TotalDeductions\": 58000,\n        \"TotalNetSalary\": 882000,\n        \"ProcessedDate\": \"2024-10-31T00:00:00.000Z\"\n    },\n    {\n        \"PayrollID\": 7,\n        \"MonthYear\": \"2024-09\",\n        \"TotalGrossSalary\": 780000,\n        \"TotalDeductions\": 56000,\n        \"TotalNetSalary\": 864000,\n        \"ProcessedDate\": \"2024-09-30T00:00:00.000Z\"\n    },\n    {\n        \"PayrollID\": 8,\n        \"MonthYear\": \"2024-08\",\n        \"TotalGrossSalary\": 760000,\n        \"TotalDeductions\": 54000,\n        \"TotalNetSalary\": 846000,\n        \"ProcessedDate\": \"2024-08-31T00:00:00.000Z\"\n    },\n    {\n        \"PayrollID\": 9,\n        \"MonthYear\": \"2024-07\",\n        \"TotalGrossSalary\": 740000,\n        \"TotalDeductions\": 52000,\n        \"TotalNetSalary\": 828000,\n        \"ProcessedDate\": \"2024-07-31T00:00:00.000Z\"\n    },\n    {\n        \"PayrollID\": 10,\n        \"MonthYear\": \"2024-06\",\n        \"TotalGrossSalary\": 720000,\n        \"TotalDeductions\": 50000,\n        \"TotalNetSalary\": 810000,\n        \"ProcessedDate\": \"2024-06-30T00:00:00.000Z\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "/api/total-salaries-paid",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/total-salaries-paid",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"total-salaries-paid"
+					]
+				},
+				"description": "Getting Total Salary Paid Info"
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/total-salaries-paid",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"total-salaries-paid"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "511"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"1ff-XT/brjHWuuXoysYcpukDpHINZew\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 02 Apr 2025 18:12:52 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"MonthYear\": \"2025-03\",\n        \"TotalSalariesPaid\": 961500\n    },\n    {\n        \"MonthYear\": \"2025-02\",\n        \"TotalSalariesPaid\": 940000\n    },\n    {\n        \"MonthYear\": \"2025-01\",\n        \"TotalSalariesPaid\": 926000\n    },\n    {\n        \"MonthYear\": \"2024-12\",\n        \"TotalSalariesPaid\": 918000\n    },\n    {\n        \"MonthYear\": \"2024-11\",\n        \"TotalSalariesPaid\": 900000\n    },\n    {\n        \"MonthYear\": \"2024-10\",\n        \"TotalSalariesPaid\": 882000\n    },\n    {\n        \"MonthYear\": \"2024-09\",\n        \"TotalSalariesPaid\": 864000\n    },\n    {\n        \"MonthYear\": \"2024-08\",\n        \"TotalSalariesPaid\": 846000\n    },\n    {\n        \"MonthYear\": \"2024-07\",\n        \"TotalSalariesPaid\": 828000\n    },\n    {\n        \"MonthYear\": \"2024-06\",\n        \"TotalSalariesPaid\": 810000\n    }\n]"
+				}
+			]
+		}
+	]
+}
